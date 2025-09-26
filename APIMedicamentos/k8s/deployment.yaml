@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medicamentos-deployment
+spec:
+  replicas: 2  # 🆕 2 copias de tu app
+  selector:
+    matchLabels:
+      app: medicamentos-app
+  template:
+    metadata:
+      labels:
+        app: medicamentos-app
+    spec:
+      containers:
+        - name: medicamentos-container
+          image: medicamentos-app:1.0
+          ports:
+            - containerPort: 8081
+          livenessProbe:
+            httpGet:
+              path: /api/medicamentos
+              port: 8081
+            initialDelaySeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /api/medicamentos
+              port: 8081
+            initialDelaySeconds: 5

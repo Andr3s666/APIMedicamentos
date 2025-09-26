@@ -8,7 +8,7 @@ import org.springframework.context.event.EventListener; // 🆕 Para escuchar ev
 public class MedicamentoCreadoListener {
 
     // 🆕 Este método se ejecuta AUTOMÁTICAMENTE cuando alguien publica MedicamentoCreadoEvent
-    @EventListener // 🆕 Método escucha eventos de tipo MedicamentoCreadoEvent"
+    @EventListener
     @Async         // 🆕 Ejecuta esto en segundo plano, no bloquear la respuesta principal"
     public void manejarMedicamentoCreado(MedicamentoCreadoEvent evento) {
 
